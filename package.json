@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "client:dev": "webpack --config ./webpack/webpack.client.dev.js",
-    "server:dev": "webpack --config ./webpack/webpack.server.dev.js",
-    "node:dev": "node ./dist/server/index.js"
+    "client:dev": "webpack  --watch --config ./webpack/webpack.client.dev.js",
+    "server:dev": "webpack  --watch --config ./webpack/webpack.server.dev.js",
+    "node:dev": "nodemon ./dist/server/index.js -w ./dist",
+    "dev": "npm run client:dev & npm run server:dev & npm run node:dev"
   },
   "keywords": [],
   "author": "",
@@ -23,8 +24,10 @@
     "@babel/preset-env": "^7.17.10",
     "@babel/preset-react": "^7.16.7",
     "babel-loader": "^8.2.5",
+    "clean-webpack-plugin": "^4.0.0",
     "webpack": "^5.72.1",
     "webpack-cli": "^4.9.2",
+    "webpack-merge": "^5.8.0",
     "webpack-node-externals": "^3.0.0"
   }
 }
