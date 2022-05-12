@@ -1,4 +1,4 @@
-import {memo} from 'react'
+import React, {memo} from 'react'
 
 const View = memo((props)=>{
     return <div>hello world</div>
