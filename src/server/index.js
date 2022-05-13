@@ -1,13 +1,14 @@
 import { renderToString } from 'react-dom/server';
 import React from 'react';
 import express from 'express';
-import Home from '../../src/client/pages/home/index.jsx'
+import Home from '../client/pages/home/index';
+
 const app = express();
 
 app.get('*', (req, res) => {
-    const reactStr = renderToString(<Home />);
+  const reactStr = renderToString(<Home />);
 
-    const html = `<!DOCTYPE html>
+  const html = `<!DOCTYPE html>
   <html lang="en">
   <head>
       <meta charset="UTF-8">
@@ -18,7 +19,7 @@ app.get('*', (req, res) => {
   </body>
   </html>`;
 
-    return res.send(html);
+  return res.send(html);
 });
 
 app.listen(9999, () => console.log('node listen 9999'));
