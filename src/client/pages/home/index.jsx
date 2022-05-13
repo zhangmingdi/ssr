@@ -1,7 +1,5 @@
-import React, {memo} from 'react'
+import React, { memo } from 'react';
 
-const View = memo((props)=>{
-    return <div>hello world 我就是一个ssr</div>
-})
+const View = memo((props) => <div>hello world 我就是一个ssr</div>);
 
-export default View
+export default View;
