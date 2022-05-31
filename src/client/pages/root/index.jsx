@@ -1,24 +1,18 @@
 import { memo } from 'react';
 import {
-  Route, Routes, BrowserRouter as Router,
+  Route, Routes,
 } from 'react-router-dom';
 import routeConfigsArr from '../../route/route.config';
 
-const RootView = memo(() => {
-  console.log('我来了');
-  return (
-    <Router>
-      <Routes>
-        1321231
-        {
-          routeConfigsArr.map((v) => {
-            const { name, ...rest } = v;
-            return <Route key={v.path} {...v} />;
-          })
-        }
-      </Routes>
-    </Router>
-  );
-});
+const RootView = memo(() => (
+  <Routes>
+    {
+      routeConfigsArr.map((v) => {
+        const { name, ...rest } = v;
+        return <Route key={v.path} {...v} />;
+      })
+    }
+  </Routes>
+));
 
 export default RootView;

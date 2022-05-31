@@ -4,18 +4,14 @@ import RootView from '../../client/pages/root';
 
 export default async (req, res, next) => {
   const { path, url } = req;
-
   if (url.indexOf('.') > -1) {
     return;
   }
-  console.log('/', path);
   const reactStr = renderToString(
     <StaticRouter location={path}>
       <RootView />
     </StaticRouter>,
   );
-  console.log('sdlkjsdlkjslkd', reactStr);
-
   const html = `<!DOCTYPE html>
   <html lang="en">
   <head>

@@ -3,14 +3,14 @@ import Study from '../pages/study';
 
 const arr = [
   {
-    element: Home,
+    element: <Home />,
     path: '/',
     exact: true,
     name: 'Home',
   },
   {
-    element: Study,
-    path: '/study',
+    element: <Study />,
+    path: 'study',
     exact: true,
     name: 'Study',
   },
