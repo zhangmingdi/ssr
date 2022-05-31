@@ -1,7 +1,6 @@
-import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom/server';
-import Home from '../../client/pages/home';
+import RootView from '../../client/pages/root';
 
 export default async (req, res, next) => {
   const { path, url } = req;
@@ -9,11 +8,13 @@ export default async (req, res, next) => {
   if (url.indexOf('.') > -1) {
     return;
   }
+  console.log('/', path);
   const reactStr = renderToString(
     <StaticRouter location={path}>
-      <Home />
+      <RootView />
     </StaticRouter>,
   );
+  console.log('sdlkjsdlkjslkd', reactStr);
 
   const html = `<!DOCTYPE html>
   <html lang="en">

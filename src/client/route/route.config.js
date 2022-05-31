@@ -3,13 +3,13 @@ import Study from '../pages/study';
 
 const arr = [
   {
-    component: Home,
+    element: Home,
     path: '/',
     exact: true,
     name: 'Home',
   },
   {
-    component: Study,
+    element: Study,
     path: '/study',
     exact: true,
     name: 'Study',

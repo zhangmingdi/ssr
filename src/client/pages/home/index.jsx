@@ -1,5 +1,5 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 
-const View = memo((props) => <div>hello world 我就是一个ssr</div>);
+const View = memo((props) => (<div>hello world 我就是一个ssr</div>));
 
 export default View;
