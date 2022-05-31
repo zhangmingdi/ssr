@@ -10,7 +10,7 @@ const arr = [
   },
   {
     element: <Study />,
-    path: 'study',
+    path: '/study',
     exact: true,
     name: 'Study',
   },

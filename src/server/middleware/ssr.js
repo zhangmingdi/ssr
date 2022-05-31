@@ -7,6 +7,7 @@ export default async (req, res, next) => {
   if (url.indexOf('.') > -1) {
     return;
   }
+  console.log('url', url, path);
   const reactStr = renderToString(
     <StaticRouter location={path}>
       <RootView />
