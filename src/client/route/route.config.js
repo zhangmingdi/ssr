@@ -7,12 +7,14 @@ const arr = [
     path: '/',
     exact: true,
     name: 'Home',
+    component: Home,
   },
   {
     element: <Study />,
     path: '/study',
     exact: true,
     name: 'Study',
+    component: Study,
   },
 ];
 
