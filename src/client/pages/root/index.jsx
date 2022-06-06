@@ -1,9 +1,20 @@
 import { memo } from 'react';
 import {
-  Route, Routes, Link,
+  Route, Switch, Link,
 } from 'react-router-dom';
 import routeConfigsArr from '../../route/route.config';
 
+function RouteWithSubRoutes(route) {
+  return (
+    <Route
+      path={route.path}
+      render={(props) => (
+        // pass the sub-routes down to keep nesting
+        <route.component {...props} routes={route.routes} />
+      )}
+    />
+  );
+}
 const RootView = memo(() => (
   <div>
     <h1>Server Rendering Example</h1>
@@ -39,14 +50,19 @@ const RootView = memo(() => (
 
       ))
     }
-    <Routes>
+    <Switch>
       {
-      routeConfigsArr.map((v) => {
-        const { name, ...rest } = v;
-        return <Route key={v.path} {...v} />;
-      })
-    }
-    </Routes>
+          routeConfigsArr.map((v) => {
+            const { name, ...rest } = v;
+            return (
+              <RouteWithSubRoutes
+                key={v.path}
+                {...v}
+              />
+            );
+          })
+        }
+    </Switch>
   </div>
 
 ));
