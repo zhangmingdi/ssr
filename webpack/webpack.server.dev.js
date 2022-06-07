@@ -13,6 +13,24 @@ module.exports = merge(base, {
     path: path.join(__dirname, '../dist/server'),
   },
   externals: [WebpackNodeExternals()], // 排除不需要的打包模块
+  module: {
+    rules: [{
+      test: /\.less?$/,
+      exclude: /node_modules/,
+      use: ['isomorphic-style-loader',
+        {
+          loader: 'css-loader',
+          options: {
+            importLoaders: 2,
+            modules: {
+              localIdentName: '[local]--[hash:base64:5]',
+            },
+          },
+        },
+        'postcss-loader',
+        'less-loader'],
+    }],
+  },
 
   plugins: [ // 配置webpack
     new webpack.DefinePlugin({

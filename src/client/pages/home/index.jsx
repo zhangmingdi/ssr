@@ -1,6 +1,7 @@
 import { memo, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { envInitialData } from '../../utils/envInitialData';
+import styles from './style.less';
 
 const Div = styled.div`
   font-size: 20px;
@@ -39,6 +40,10 @@ const View = memo((props) => {
           {info.data}
         </span>
       </Div>
+      <div className={styles.lessStyle}>
+        lessStyle
+      </div>
+
     </div>
   );
 });
