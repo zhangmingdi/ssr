@@ -10,11 +10,24 @@ export default async (req, res, next) => {
     return;
   }
   console.log('url', url, path);
-  const branch = matchRoutes(routeConfigsArr, path);
+  const branch = matchRoutes(routeConfigsArr, path)[0];
+  let component = {};
   console.log('branch', branch);
+  if (branch) {
+    component = branch.route.component;
+  }
+  let initialData = {};
+
+  if (component.preFetch) {
+    initialData = await component.preFetch();
+  }
+
+  const context = {
+    initialData,
+  };
 
   const reactStr = renderToString(
-    <StaticRouter location={path}>
+    <StaticRouter location={path} context={context}>
       <RootView />
     </StaticRouter>,
   );
@@ -26,6 +39,7 @@ export default async (req, res, next) => {
   </head>
   <body>
       <div id="root">${reactStr}</div>
+      <textarea id="textareaSsrData" style="display: none">${JSON.stringify(initialData)}</textarea>
   </body>
   <script type="text/javascript" src="/index.js"></script>
   </html>`;
