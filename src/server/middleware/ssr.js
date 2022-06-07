@@ -1,6 +1,7 @@
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import { matchRoutes } from 'react-router-config';
+import { ServerStyleSheet } from 'styled-components';
 import RootView from '../../client/pages/root';
 import routeConfigsArr from '../../client/route/route.config';
 
@@ -23,11 +24,15 @@ export default async (req, res, next) => {
   const context = {
     initialData,
   };
+  const sheet = new ServerStyleSheet();
 
   const reactStr = renderToString(
-    <StaticRouter location={path} context={context}>
-      <RootView />
-    </StaticRouter>,
+    sheet.collectStyles(
+      <StaticRouter location={path} context={context}>
+        <RootView />
+      </StaticRouter>,
+    )
+    ,
   );
   console.log('reactStr', reactStr);
   const html = `<!DOCTYPE html>
@@ -35,6 +40,7 @@ export default async (req, res, next) => {
   <head>
       <meta charset="UTF-8">
       <title></title>
+      ${sheet.getStyleTags()}
   </head>
   <body>
       <div id="root">${reactStr}</div>

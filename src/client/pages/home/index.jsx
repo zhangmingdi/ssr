@@ -1,6 +1,16 @@
 import { memo, useEffect, useState } from 'react';
+import styled from 'styled-components';
 import { envInitialData } from '../../utils/envInitialData';
 
+const Div = styled.div`
+  font-size: 20px;
+  color: blue;
+
+  span {
+    color: red;
+    font-size: 18px;
+  }
+`;
 const View = memo((props) => {
   const [info, setInfo] = useState(envInitialData(props) || {});
   useEffect(() => {
@@ -16,14 +26,19 @@ const View = memo((props) => {
   }, []);
   return (
     <div>
-      <button onClick={() => {
-        alert('home页面');
-      }}
-      >
-        点击
-      </button>
-      ssr的
-      {info.data}
+      <Div>
+        <button onClick={() => {
+          alert('home页面');
+        }}
+        >
+          点击
+        </button>
+        ssr的
+        <span>
+          {' '}
+          {info.data}
+        </span>
+      </Div>
     </div>
   );
 });
