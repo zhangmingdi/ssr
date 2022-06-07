@@ -29,6 +29,7 @@ export default async (req, res, next) => {
       <RootView />
     </StaticRouter>,
   );
+  console.log('reactStr', reactStr);
   const html = `<!DOCTYPE html>
   <html lang="en">
   <head>

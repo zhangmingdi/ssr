@@ -12,9 +12,9 @@ module.exports = merge(base, {
     path: path.join(__dirname, '../dist/client'),
   },
 
-  plugins: [  // 配置webpack
+  plugins: [ // 配置webpack
     new webpack.DefinePlugin({
-      '__isServer': false,   // 服务端设置true，客户端设置false
+      __isServer: false, // 服务端设置true，客户端设置false
     }),
-  ]
+  ],
 });

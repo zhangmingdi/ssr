@@ -16,6 +16,12 @@ const View = memo((props) => {
   }, []);
   return (
     <div>
+      <button onClick={() => {
+        alert('home页面');
+      }}
+      >
+        点击
+      </button>
       ssr的
       {info.data}
     </div>
