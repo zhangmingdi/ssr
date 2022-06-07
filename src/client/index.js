@@ -6,7 +6,6 @@ import RootView from './pages/root';
 
 const { pathname } = document.location;
 const initialData = JSON.parse(document.getElementById('textareaSsrData').value);
-
 ReactDOM.hydrateRoot(
   document.getElementById('root'),
   <BrowserRouter>

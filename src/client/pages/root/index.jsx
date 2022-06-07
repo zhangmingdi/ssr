@@ -5,12 +5,13 @@ import {
 import routeConfigsArr from '../../route/route.config';
 
 function RouteWithSubRoutes(route) {
+  const { initialData } = route;
   return (
     <Route
       path={route.path}
       render={(props) => {
         return (
-          <route.component {...props} routes={route.routes} />
+          <route.component {...props} routes={route.routes} initialData={initialData} />
         );
       }}
     />

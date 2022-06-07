@@ -22,11 +22,7 @@ module.exports = {
   rules: {
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'arrow-body-style': ['error', 'always'],
+    'import/prefer-default-export': 0,
   },
-  'react/jsx-props-no-spreading': [true, {
-    custom: 'ignore',
-    explicitSpread: 'ignore',
-    "html": "ignore" ,
-    "react/prop-types":false
-  }],
+
 };

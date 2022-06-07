@@ -6,4 +6,4 @@ app.use(express.static('./dist/client'));
 
 app.use(ssr);
 
-app.listen(9999, () => console.log('node listen 9999'));
+app.listen(9999, () => { return console.log('node listen 9999'); });

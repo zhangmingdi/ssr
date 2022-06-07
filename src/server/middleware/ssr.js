@@ -9,10 +9,8 @@ export default async (req, res, next) => {
   if (url.indexOf('.') > -1) {
     return;
   }
-  console.log('url', url, path);
   const branch = matchRoutes(routeConfigsArr, path)[0];
   let component = {};
-  console.log('branch', branch);
   if (branch) {
     component = branch.route.component;
   }
