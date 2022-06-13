@@ -2,6 +2,7 @@ import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import { matchRoutes } from 'react-router-config';
 import { ServerStyleSheet } from 'styled-components';
+import StyleContext from 'isomorphic-style-loader/StyleContext';
 import RootView from '../../client/pages/root';
 import routeConfigsArr from '../../client/route/route.config';
 
@@ -25,21 +26,29 @@ export default async (req, res, next) => {
     initialData,
   };
   const sheet = new ServerStyleSheet();
-
+  const css = new Set(); // CSS for all rendered React components
+  const insertCss = (...styles) => {
+    return styles.forEach((style) => {
+      console.log('style._getCss()', style._getCss());
+      return css.add(style._getCss());
+    });
+  };
   const reactStr = renderToString(
     sheet.collectStyles(
       <StaticRouter location={path} context={context}>
-        <RootView />
+        <StyleContext.Provider value={{ insertCss }}>
+          <RootView />
+        </StyleContext.Provider>
       </StaticRouter>,
     )
     ,
   );
-  console.log('reactStr', reactStr);
   const html = `<!DOCTYPE html>
   <html lang="en">
   <head>
       <meta charset="UTF-8">
       <title></title>
+      <style>${[...css].join('')}</style>
       ${sheet.getStyleTags()}
   </head>
   <body>

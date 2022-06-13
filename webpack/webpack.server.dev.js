@@ -21,10 +21,11 @@ module.exports = merge(base, {
         {
           loader: 'css-loader',
           options: {
-            importLoaders: 2,
-            modules: {
-              localIdentName: '[local]--[hash:base64:5]',
-            },
+            // importLoaders: 2,
+            // modules: {
+            //   localIdentName: '[local]--[hash:base64:5]',
+            // },
+            modules: true,
           },
         },
         'postcss-loader',

@@ -24,6 +24,7 @@ module.exports = {
     'arrow-body-style': ['error', 'always'],
     'import/prefer-default-export': 0,
     'react/button-has-type': 0,
+    'no-underscore-dangle': ['error', { allowAfterThis: true }],
   },
 
 };

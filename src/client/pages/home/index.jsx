@@ -1,6 +1,8 @@
 import { memo, useEffect, useState } from 'react';
 import styled from 'styled-components';
+import useStyles from 'isomorphic-style-loader/useStyles';
 import { envInitialData } from '../../utils/envInitialData';
+import Custom from './component/custom';
 import styles from './style.less';
 
 const Div = styled.div`
@@ -12,7 +14,10 @@ const Div = styled.div`
     font-size: 18px;
   }
 `;
+console.log('styles._getContent()', styles._getCss());
 const View = memo((props) => {
+  // console.log('styles._getCss', styles._getCss());
+  useStyles(styles);
   const [info, setInfo] = useState(envInitialData(props) || {});
   useEffect(() => {
     if (!info.data) {
@@ -43,7 +48,7 @@ const View = memo((props) => {
       <div className={styles.lessStyle}>
         lessStyle
       </div>
-
+      <Custom />
     </div>
   );
 });
