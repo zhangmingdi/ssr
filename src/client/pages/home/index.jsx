@@ -1,6 +1,5 @@
 import { memo, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import useStyles from 'isomorphic-style-loader/useStyles';
 import { envInitialData } from '../../utils/envInitialData';
 import Custom from './component/custom';
 import styles from './style.less';
@@ -15,7 +14,6 @@ const Div = styled.div`
   }
 `;
 const View = memo((props) => {
-  useStyles(styles);
   const [info, setInfo] = useState(envInitialData(props) || {});
   useEffect(() => {
     if (!info.data) {
