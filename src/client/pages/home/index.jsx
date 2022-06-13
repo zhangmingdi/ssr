@@ -14,9 +14,7 @@ const Div = styled.div`
     font-size: 18px;
   }
 `;
-console.log('styles._getContent()', styles._getCss());
 const View = memo((props) => {
-  // console.log('styles._getCss', styles._getCss());
   useStyles(styles);
   const [info, setInfo] = useState(envInitialData(props) || {});
   useEffect(() => {
