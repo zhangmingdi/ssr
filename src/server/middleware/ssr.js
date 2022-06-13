@@ -47,6 +47,7 @@ export default async (req, res, next) => {
   <head>
       <meta charset="UTF-8">
       <title></title>
+      <link rel="stylesheet" href="/main.css"></link>
       <style>${[...css].join('')}</style>
       ${sheet.getStyleTags()}
   </head>

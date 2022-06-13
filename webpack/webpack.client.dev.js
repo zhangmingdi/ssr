@@ -1,6 +1,6 @@
-const WebpackNodeExternals = require('webpack-node-externals');
 const { merge } = require('webpack-merge');
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
 const base = require('./webpack.base');
 
@@ -16,7 +16,8 @@ module.exports = merge(base, {
     rules: [{
       test: /\.less?$/,
       exclude: /node_modules/,
-      use: ['style-loader',
+      use: [
+        MiniCssExtractPlugin.loader,
         {
           loader: 'css-loader',
           options: {
@@ -32,6 +33,7 @@ module.exports = merge(base, {
   },
 
   plugins: [ // 配置webpack
+    new MiniCssExtractPlugin(),
     new webpack.DefinePlugin({
       __isServer: false, // 服务端设置true，客户端设置false
     }),
