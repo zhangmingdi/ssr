@@ -29,7 +29,6 @@ export default async (req, res, next) => {
   const css = new Set(); // CSS for all rendered React components
   const insertCss = (...styles) => {
     return styles.forEach((style) => {
-      console.log('style._getCss()', style._getCss());
       return css.add(style._getCss());
     });
   };
