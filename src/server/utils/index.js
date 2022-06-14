@@ -15,3 +15,12 @@ export const getStaticRoute = async (asyncRoute) => {
 
   return staitcRoute;
 };
+
+export const getAimComp = (routeList, pathname) => {
+  const len = routeList.length;
+  for (let i = 0; i < len; i++) {
+    if (routeList[i].path === pathname) {
+      return routeList[i];
+    }
+  }
+};

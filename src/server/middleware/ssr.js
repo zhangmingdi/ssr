@@ -17,6 +17,7 @@ export default async (req, res, next) => {
   if (url.indexOf('.') > -1) {
     return;
   }
+  // -------------------------数据同构
   const branch = matchRoutes(routeConfigsArr, path)[0];
   let component = {};
   if (branch) {
@@ -31,6 +32,8 @@ export default async (req, res, next) => {
   const context = {
     initialData,
   };
+
+  // ---------------css同构
   const sheet = new ServerStyleSheet();
   const css = new Set(); // CSS for all rendered React components
   // const insertCss = (...styles) => {
