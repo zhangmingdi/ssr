@@ -2,7 +2,7 @@ import { memo } from 'react';
 import {
   Route, Switch, Link,
 } from 'react-router-dom';
-import routeConfigsArr from '../../route/route.config';
+// import routeConfigsArr from '../../route/route.config';
 
 function RouteWithSubRoutes(route) {
   const { initialData } = route;
@@ -18,7 +18,7 @@ function RouteWithSubRoutes(route) {
   );
 }
 const RootView = memo((props) => {
-  const { pathname, initialData } = props;
+  const { pathname, initialData, routeConfigsArr } = props;
   return (
     <div>
       <h1>Server Rendering Example</h1>

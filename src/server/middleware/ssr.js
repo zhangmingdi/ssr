@@ -5,6 +5,12 @@ import { ServerStyleSheet } from 'styled-components';
 // import StyleContext from 'isomorphic-style-loader/StyleContext';
 import RootView from '../../client/pages/root';
 import routeConfigsArr from '../../client/route/route.config';
+import { getStaticRoute } from '../utils/index';
+
+let staticRoute = [];
+(async () => {
+  staticRoute = await getStaticRoute(routeConfigsArr);
+})();
 
 export default async (req, res, next) => {
   const { path, url } = req;
@@ -36,7 +42,7 @@ export default async (req, res, next) => {
     sheet.collectStyles(
       <StaticRouter location={path} context={context}>
         {/* <StyleContext.Provider value={{ insertCss }}> */}
-        <RootView />
+        <RootView routeConfigsArr={staticRoute} />
         {/* </StyleContext.Provider> */}
       </StaticRouter>,
     )
